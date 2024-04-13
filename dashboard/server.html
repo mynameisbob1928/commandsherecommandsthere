@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Server management</title>
+	<meta content="Server management" property="og:title" />
+	<meta content="Commands here, commands there" property="og:description" />
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<style>
+		body {
+			background-color: rgb(209, 67, 10);
+		}
+
+		.switch {
+			position: relative;
+			display: inline-block;
+			width: 60px;
+			height: 34px;
+		}
+
+		.switch input {
+			opacity: 0;
+			width: 0;
+			height: 0;
+		}
+
+		.slider {
+			position: absolute;
+			cursor: pointer;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background-color: #ccc;
+			-webkit-transition: .4s;
+			transition: .4s;
+		}
+
+		.slider:before {
+			position: absolute;
+			content: "";
+			height: 26px;
+			width: 26px;
+			left: 4px;
+			bottom: 4px;
+			background-color: white;
+			-webkit-transition: .4s;
+			transition: .4s;
+		}
+
+		input:checked+.slider {
+			background-color: #2196F3;
+		}
+
+		input:focus+.slider {
+			box-shadow: 0 0 1px #2196F3;
+		}
+
+		input:checked+.slider:before {
+			-webkit-transform: translateX(26px);
+			-ms-transform: translateX(26px);
+			transform: translateX(26px);
+		}
+
+		.slider {
+			border-radius: 34px;
+		}
+
+		.slider:before {
+			border-radius: 50%;
+		}
+	</style>
+</head>
+
+<body>
+	<script>
+		let commandlist = [];
+		function toggle(box) {
+			var checkBox = document.getElementById(`checkbox-${box}`);
+			checkBox;
+			if (checkBox.checked == true) {
+				commandlist.push(box);
+			} else {
+				commandlist.splice(commandlist.indexOf(box), 1);
+			}
+			console.log(commandlist);
+		}
+		function applycmds() {
+			const box = document.getElementById('applybox');
+			box.innerHTML = 'Sending comamnds'
+			fetch(`/guild/${window.location.pathname.split('/')[2]}`, {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify({ commands: commandlist }),
+			}).then(async response => {
+				if (response.status == 204) {
+					box.innerHTML = 'Commands applied'
+					setTimeout(() => box.innerHTML = 'Apply commands', 3000)
+				}
+				else {
+					box.innerHTML = 'Failed to apply commands'
+					setTimeout(() => box.innerHTML = 'Apply commands', 3000)
+				}
+			})
+		}
+	</script>
+	<div style="color:blue; text-align: center; margin-top: 1%; font-size: 30px;">
+		<div style="text-align: left; font-size: 15px;"><a href="/">Server list</a></div>
+		<div id='applybox'
+			style="font-size: 15px; text-align: center; margin-top: -2.5vb; width: 100px; height: 44px; margin-left: 90%; background-color: rgb(245, 216, 51); cursor: pointer;"
+			onclick="applycmds();">Apply commands</div>
+		<div id="servertitle" style="margin-top: -2.5vb;">Server</div>
+		<div id="commands" style="display: flex; flex-wrap: wrap; justify-content: center;"></div>
+	</div>
+	<script>
+		fetch(`/guild/${window.location.pathname.split('/')[2]}`, {
+			method: 'GET',
+		}).then(async response => {
+			var data = await response.json()
+			document.getElementById('servertitle').innerHTML = `Server ${data.guild.name}`
+			commandlist = data.commands;
+			const totalcommands = data.totalcommands
+			const parentDiv = document.getElementById("commands");
+			for (const command of totalcommands) {
+				const newDiv = document.createElement("div");
+				newDiv.setAttribute('style', "border-radius: 10px; width: 250px; height: 70px; background-color: rgb(49, 49, 49); color: white; font-size: 20px; text-align: left; margin-top: 30px; margin-left: 20px; display: flex; align-items: center; justify-content: space-between;");
+				newDiv.innerHTML = `<div style="margin: 20px;">${command.charAt(0).toUpperCase() + command.slice(1)}</div>
+				<label class="switch" style="margin-right: 20px;">
+					<input type="checkbox" id="checkbox-${command}" onclick="toggle('${command}')"${commandlist.includes(command) ? ' checked="checked"' : ''}>
+					<span class="slider"></span>
+				</label>`;
+				parentDiv.appendChild(newDiv);
+			}
+		}).catch(error => {
+			console.error('Error:', error);
+		});
+	</script>
+</body>
+
+</html>
