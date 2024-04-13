@@ -1,0 +1,7 @@
+{
+    "ownerIds": [],
+    "defaultCommands": [
+        "ping",
+        "stats"
+    ]
+}
