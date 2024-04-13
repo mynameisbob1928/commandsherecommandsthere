@@ -23,4 +23,7 @@ You should also note that there is no security on the dashboard, so if anyone we
 
 ### El bot
 As I have already mentioned it comes with three premade commands. One of them is /ping which literally tells you the ping. Another is /stats which shows a bunch of stats about the bot and device (Credit to @g.spxrk for original [code](https://discord.com/channels/970775928596746290/1228343512378904617) ). The last is /reply which allows moderators to anonymously reply to users messages.\
-As for the more backend stuff, the bot is able to set default commands upon joining a guild and remove when leaving. It also checks any newly joined guilds while it's offline to apply commands when starting up.
+As for the more backend stuff, the bot is able to set default commands upon joining a guild and remove when leaving. It also checks any newly joined guilds while it's offline to apply commands when starting up.\
+The bot also has 3 prefix commands, again as i have already mentioned. There is ,help which shows the syntax of the three prefix commands. The ,addcmd can be used to ad commands to the server it's being run in, and can take multiple commands at once. For example `,addcmd stats ping`. The ,removecmd is basically the same but it removes commands, same syntax with multiple options commands at once.
+
+Anyway i think thats it, anythign else I may have forgotten either let me know on discord or in an issue here.
