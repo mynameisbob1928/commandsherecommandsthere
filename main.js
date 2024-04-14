@@ -22,7 +22,7 @@ client.once('ready', () => require('./dashboard/dash.js')(client));
 			client.once(event.name, (...args) => event.execute(...args, client));
 		}
 	});
-	await client.login(process.env.token);
+	client.login(process.env.token);
 })();
 
 
