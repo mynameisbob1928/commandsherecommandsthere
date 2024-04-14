@@ -26,4 +26,13 @@ As I have already mentioned it comes with three premade commands. One of them is
 As for the more backend stuff, the bot is able to set default commands upon joining a guild and remove when leaving. It also checks any newly joined guilds while it's offline to apply commands when starting up.\
 The bot also has 3 prefix commands, again as i have already mentioned. There is ,help which shows the syntax of the three prefix commands. The ,addcmd can be used to ad commands to the server it's being run in, and can take multiple commands at once. For example `,addcmd stats ping`. The ,removecmd is basically the same but it removes commands, same syntax with multiple options commands at once.
 
-Anyway i think thats it, anythign else I may have forgotten either let me know on discord or in an issue here.
+Anyway i think thats it, anything else I may have forgotten either let me know on discord or in an issue here.
+
+### Some images :]
+
+![Main page](https://github.com/mynameisbob1928/commandsherecommandsthere/assets/129603125/d8d9d585-72ab-4984-b9b8-6e263c0c41d3)\
+(The colour scheme is very bad i know)\
+![Server page](https://github.com/mynameisbob1928/commandsherecommandsthere/assets/129603125/b47083be-8e59-49ae-8c99-b0b4a82ba96e)\
+![Stats command](https://github.com/mynameisbob1928/commandsherecommandsthere/assets/129603125/833dcc99-8836-4f98-8379-b4f84e136d97)\
+![Premade command list](https://github.com/mynameisbob1928/commandsherecommandsthere/assets/129603125/76779200-523b-4f70-8d20-155434cd33a8)\
+![Reply command](https://github.com/mynameisbob1928/commandsherecommandsthere/assets/129603125/9b7530a3-f779-4ce3-9f8b-bdb3f7046478)\
