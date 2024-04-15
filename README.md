@@ -8,7 +8,7 @@ All that is in this project right now is a basic slash command bot with 3 premad
 ## Setup
 Setup is quite simple, providing you know what you are doing.
 
-First up: add admins/owner ids in config.json\
+First up: rename config.json.example to just config.json add the admins/owner ids in the ownerIds array\
 Then get the .env.example and rename it to just .env . Inside that file you'll need to place just your bot's token after the `token=`.\
 Also get the guilds.json.example and rename it to guilds.json\
 From there just run `npm i` in your terminal, then run `node .` and it should all be working.

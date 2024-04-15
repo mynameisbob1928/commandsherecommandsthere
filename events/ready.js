@@ -22,22 +22,19 @@ module.exports = {
 		}
 		else { console.log('No new guilds'); }
 		setInterval(() => {
-			fs.writeFileSync('./guilds.json', `${JSON.stringify(client.guildlist)}`);
-			/*
-			idk why but this didn't work for me, if someone can figure out why it isn't working then that'll be great :3
+			// tysm to @cyposhop for figuring this out :3
 
-			const guilds = require('../guilds.json');
-			console.log('guilds\n', guilds);
-			console.log('\nclient guilds\n', client.guildlist);
-			if (guilds !== client.guildlist) {
-				fs.writeFileSync('./guilds.json', `${JSON.stringify(client.guildlist)}`);
-				client.guildlist = guilds;
-				console.log('saved guild file');
+			const guildsFile = require('../guilds.json');
+
+			const guildsString = JSON.stringify(guildsFile);
+			const clientGuildsString = JSON.stringify(client.guildlist);
+
+			if (guildsString !== clientGuildsString) {
+				fs.writeFileSync('./guilds.json', clientGuildsString);
+				console.log('Saved guild file');
 			}
-			else {
-				console.log('nothing new to save');
-			}
-			delete require.cache[require.resolve('../guilds.json')];*/
+
+			delete require.cache[require.resolve('../guilds.json')];
 		}, 2 * 1000 * 60);
 	},
 };
