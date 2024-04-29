@@ -27,7 +27,7 @@ module.exports = {
 			const statsEmbed = new EmbedBuilder()
 				.setTitle(`${client.user.username}'s Statistics`)
 				.setColor('Random')
-				.setDescription(`\`\`\`yml\nName: ${client.user.username}#${client.user.discriminator} [${client.user.id}]\nAPI ping: ${client.ws.ping}ms\nPing: ${Math.floor(msg.createdAt - interaction.createdAt)}ms\nUptime: ${formatUptime(client.uptime)}\`\`\``)
+				.setDescription(`\`\`\`yml\nName: ${client.user.username}#${client.user.discriminator} [${client.user.id}]\nAPI ping: ${client.ws.ping}ms\nPing: ${Math.floor(msg.createdAt - interaction.createdAt)}ms\nUptime: ${formatUptime(client.uptime / 1000)}\`\`\``)
 				.addFields([
 					{
 						name: ':bar_chart: General Statistics',
